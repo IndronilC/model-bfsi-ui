@@ -61,5 +61,9 @@ const Data = {
       data.zipcode;
   };
   
-
+  export const setKycdata = (data:any) => {
+    Data.addressProofType = data.addressproof;
+    Data.idProofType = data.idproof;
+  };
   
+ 
