@@ -180,4 +180,11 @@ export default function Summary() {
           industry{" "}
         </p>
 
-        
+        <div>
+          <button className="download" onClick={handleExport}>
+            <img src={downloadLogo} alt="down" />
+            <span className="file">Export&nbsp;XLS</span>
+          </button>
+        </div>
+
+       
