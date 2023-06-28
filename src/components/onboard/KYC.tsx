@@ -185,7 +185,14 @@ export default function KYC() {
             </span>
           </div>
 
-          
+          <div className="upload-box1">
+            <label className="labelcont4">
+              <b>
+                Upload Address Proof <span className="mandate">*</span>
+              </b>
+            </label>
+
+           
     </div>
   );
 }
