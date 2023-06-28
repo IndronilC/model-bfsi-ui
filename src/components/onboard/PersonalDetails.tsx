@@ -250,7 +250,40 @@ export default function PersonalDetails() {
               </span>
             </div>
 
-           
+            <div className="checkbox-field">
+              <input
+                type="checkbox"
+                className="checkbox"
+                id="user"
+                // name="user"
+                value="user"
+                {...register("checkbox", {
+                  required: "Checkbox Selection is Required...",
+                })}
+                //required
+                // defaultValue={objData?.checkbox}
+              ></input>
+              <label htmlFor="user" className="terms">
+                I Agree with <a href="www.kanini.com">Terms and Conditions</a>
+              </label>
+              <span
+                style={{
+                  color: "red",
+                  position: "absolute",
+                  top: "78%",
+                  fontFamily: "auto",
+                  fontSize: "117%",
+                  fontWeight: "500",
+                  left: "0%",
+                }}
+                className="errors"
+              >
+                {errors.checkbox?.message?.toString()}
+              </span>
+            </div>
+            
+          </form>
+        </div>
       </div>
     </div>
   );
