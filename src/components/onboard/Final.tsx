@@ -1,6 +1,5 @@
 import React from "react";
 import success from '../assets/img/Success.png'
-import Header from "../../shared/header/header";
 import { useNavigate } from "react-router-dom";
 
 
@@ -15,7 +14,7 @@ export default function Final(){
   }
     return(
         <div>
-       <Header/>
+      
 
        <img className="success" src={success} />
        
