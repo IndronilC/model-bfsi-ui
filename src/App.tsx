@@ -7,7 +7,7 @@ import CustomerIdentification from './components/onboard/CustomerIdentification'
 import KYC from './components/onboard/KYC';
 import SecurityQuestions from './components/onboard/SecurityQuestions';
 import SummaryPage from './components/onboard/SummaryPage'
-import Final from './components/Final';
+import Final from './components/onboard/Final';
 import Sidenav from './shared/sidenav/sidenav';
 import Header from './shared/header/header';
 import Footer from './shared/footer/footer';
