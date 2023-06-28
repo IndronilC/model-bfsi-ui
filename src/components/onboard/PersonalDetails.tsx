@@ -218,7 +218,39 @@ export default function PersonalDetails() {
               </span>
             </div>
 
-            
+            <div className="pan-number">
+              <label className="pan-text">PAN (Personal Account Number)*</label>
+              <input
+                className="pan-field"
+                {...register("panNumber", {
+                  required: "PAN Number is Required...",
+
+                  pattern: {
+                    value: /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/,
+
+                    message: "PAN Number must be valid",
+                  },
+                })}
+                defaultValue={objData?.panNumber}
+                placeholder="X X X  X X X X  X X X "
+              ></input>
+              <span
+                style={{
+                  color: "red",
+                  position: "absolute",
+                  top: "103%",
+                  fontFamily: "auto",
+                  fontSize: "115%",
+                  fontWeight: "500",
+                  left: "0%",
+                }}
+                className="errors"
+              >
+                {errors.panNumber?.message?.toString()}
+              </span>
+            </div>
+
+           
       </div>
     </div>
   );
