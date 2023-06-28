@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import First from './components/onboard/First';
-import PersonalDetails from './components/PersonalDetails';
+import PersonalDetails from './components/onboard/PersonalDetails';
 import CustomerIdentification from './components/CustomerIdentification';
 import KYC from './components/KYC';
 import SecurityQuestions from './components/SecurityQuestions';
