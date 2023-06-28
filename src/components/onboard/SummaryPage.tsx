@@ -243,4 +243,10 @@ export default function Summary() {
           </table>
         </div>
 
-        
+        <button className="sub" onClick={handleClick || (() => nextStep())}>
+          Submit
+        </button>
+      </div>
+    </div>
+  );
+}
