@@ -146,7 +146,46 @@ export default function KYC() {
               </span>
             </span>
 
-            
+            <span>
+              <div className="field">
+                <label className="labelcont2">
+                  <b>
+                    Address Proof <span className="mandate">*</span>
+                  </b>
+                </label>
+
+                <select
+                  className="addressproof"
+                  {...register("addressproof", {
+                    required: "Address Proof is Required...",
+                  })}
+                >
+                  <option value="">Select </option>
+
+                  <option value="1">AadharCard</option>
+
+                  <option value="2">PanCard</option>
+
+                  <option value="3">VoterId</option>
+                </select>
+              </div>
+              <span
+                style={{
+                  position: "absolute",
+                  left: "351%",
+                  top: "115px",
+                  fontFamily: "auto",
+                  fontSize: "95%",
+                  width: "146%",
+                }}
+                className="errors"
+              >
+                {errors.addressproof?.message?.toString()}
+              </span>
+            </span>
+          </div>
+
+          
     </div>
   );
 }
