@@ -11,7 +11,7 @@ import edit from "../assets/img/Edit.png";
 import downloadLogo from "../assets/img/Download.png";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
- import { getData } from "../Utils/common";
+ import { getData } from "../../Utils/common";
 import * as XLSX from 'xlsx';
 import {write} from 'xlsx';
 
