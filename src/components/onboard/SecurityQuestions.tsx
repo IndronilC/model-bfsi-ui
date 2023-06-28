@@ -359,4 +359,26 @@ export default function SecurityQuestions() {
           <br />
           <br />
 
-         
+          <button className="prsub">Preview & Submit</button>
+        </form>
+      </div>
+
+      {/* <div>
+        <div className="pagination-4">
+          <button className="pagination-btn">
+            <span className="PersonalDetails" id=""></span>
+          </button>
+          <button className="pagination-btn">
+            <span className="CustomerIdentification" id=""></span>
+          </button>
+          <button className="pagination-btn">
+            <span className="KYC" id=""></span>
+          </button>
+          <button className="pagination-btn">
+            <span className="SecurityQuestions" id=""></span>
+          </button>
+        </div>
+      </div> */}
+    </div>
+  );
+}
