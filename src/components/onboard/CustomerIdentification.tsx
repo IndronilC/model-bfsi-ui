@@ -196,7 +196,33 @@ export default function CustomerIdentification() {
             </span>
           </div>
 
-         
+          <div>
+            <label className="label-name-3">DOB *</label>
+            <input
+              className="TextBox-3"
+              type="date"
+              {...register("dob", {
+                required: "DOB is Required...",
+              })}
+              defaultValue={objData?.dateOfBirth}
+              placeholder="MM/DD/YYYY"
+            />
+
+            <span
+              style={{
+                position: "absolute",
+                left: "436px",
+                top: "460px",
+                fontFamily: "auto",
+                fontSize: "95%",
+              }}
+              className="errors"
+            >
+              {errors.dob?.message?.toString()}
+            </span>
+          </div>
+
+          
       </div>
     </div>
   );
