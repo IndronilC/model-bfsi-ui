@@ -192,7 +192,53 @@ export default function KYC() {
               </b>
             </label>
 
-           
+            {/* <label>Upload </label> */}
+            {!fileSelected && (
+              <p className="drag-drop-area">
+                Drag and drop PDF, JEPG,PNG file or{" "}
+                <span style={{ color: "blue" }}>Browse from computer</span>
+                <img className="vector" src={Vector}></img>
+              </p>
+            )}
+
+            <input
+              className="upload-file1"
+              type="file"
+              {...register("uploadAddressProof", {
+                required: "Upload Address Proof is Required...",
+              })}
+              onChange={handleFileChange1}
+            />
+
+            <span
+              style={{
+                position: "absolute",
+                top: "109%",
+                fontFamily: "auto",
+                fontSize: "95%",
+                width: "100%",
+              }}
+              className="errors"
+            >
+              {errors.uploadAddressProof?.message?.toString()}
+            </span>
+
+            {fileSelected && (
+              <div>
+                <img className="upload" src={Uploadicon}></img>
+                <div>
+                  <label className="file-name">{fileSelected.name}</label>
+                </div>
+                <img
+                  className="remove-file"
+                  src={close}
+                  onClick={handleClearFile1}
+                ></img>
+              </div>
+            )}
+          </div>
+
+          
     </div>
   );
 }
