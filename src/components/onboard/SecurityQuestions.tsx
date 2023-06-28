@@ -136,6 +136,50 @@ export default function SecurityQuestions() {
                 {errors.Question1?.message?.toString()}
               </span>
             </div>
-            
-  );
+            <div>
+              <label className="label1">
+                <b>Answer 1</b>
+              </label>
+              <input
+                className="ans1"
+                type="text"
+                {...register("Answer1", {
+                  required: "Answer 1 is Required...",
+
+                  minLength: {
+                    value: 3,
+
+                    message: "Your answer must be atleast 3 characters long...",
+                  },
+
+                  maxLength: {
+                    value: 50,
+
+                    message: "Your answer must be atmost 50 characters long...",
+                  },
+
+                  pattern: {
+                    value: /^(?!\s*$).+/,
+                    message: "Your answer cannot contain whitespace only.",
+                  },
+                })}
+                placeholder="Enter your answer"
+              />
+              <span
+                style={{
+                  position: "absolute",
+                  left: "27%",
+                  top: "98%",
+                  fontFamily: "auto",
+                  fontSize: "95%",
+                  width: "300px",
+                }}
+                className="errors"
+              >
+                {errors.Answer1?.message?.toString()}
+              </span>
+            </div>
+          </div>
+          <br />
+          
 }
