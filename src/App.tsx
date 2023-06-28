@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import First from './components/onboard/First';
 import PersonalDetails from './components/onboard/PersonalDetails';
 import CustomerIdentification from './components/onboard/CustomerIdentification';
-import KYC from './components/KYC';
+import KYC from './components/onboard/KYC';
 import SecurityQuestions from './components/SecurityQuestions';
 import SummaryPage from './components/SummaryPage'
 import Final from './components/Final';
