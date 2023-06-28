@@ -238,7 +238,59 @@ export default function KYC() {
             )}
           </div>
 
-          
+          <div className="upload-box">
+            <label className="labelcont3">
+              <b>
+                Upload Id Proof <span className="mandate">*</span>
+              </b>
+            </label>
+            {!selectedFile && (
+              <p className="drag-drop-area">
+                Drag and drop PDF, JEPG,PNG file or{" "}
+                <span style={{ color: "blue" }}>Browse from computer</span>
+                <img className="vector" src={Vector}></img>
+              </p>
+            )}
+
+            <input
+              className="upload-file"
+              type="file"
+              {...register("uploadIdProof", {
+                required: "Upload Id Proof is Required...",
+              })}
+              onChange={handleFileChange}
+            />
+            <span
+              style={{
+                position: "absolute",
+                top: "109%",
+                fontFamily: "auto",
+                fontSize: "95%",
+                width: "100%",
+              }}
+              className="errors"
+            >
+              {errors.uploadIdProof?.message?.toString()}
+            </span>
+
+            {selectedFile && (
+              <div>
+                <img className="upload" src={Uploadicon}></img>
+                <div>
+                  <label className="file-name">{selectedFile.name}</label>
+                </div>
+                <img
+                  className="remove-file"
+                  src={close}
+                  onClick={handleClearFile}
+                ></img>
+              </div>
+            )}
+          </div>
+
+       
+        </form>
+      </div>
     </div>
   );
 }
