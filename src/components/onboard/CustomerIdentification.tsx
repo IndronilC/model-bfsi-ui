@@ -154,7 +154,50 @@ export default function CustomerIdentification() {
             </span>
           </div>
 
-          
+          <div>
+            <label className="label-name-1">Last Name *</label>
+            <input
+              className="TextBox-1"
+              type="text"
+              {...register("lastName", {
+                required: "Last Name is Required...",
+
+                minLength: {
+                  value: 1,
+
+                  message: "Last Name must be atleast 1 characters long...",
+                },
+
+                maxLength: {
+                  value: 15,
+
+                  message: "Last Name must be atmost 15 characters long...",
+                },
+
+                pattern: {
+                  value: /^(?!\s*$).+/,
+                  message: "Last Name cannot contain whitespace only.",
+                },
+              })}
+              defaultValue={objData?.lastName}
+              placeholder="Enter"
+            />
+            <span
+              style={{
+                position: "absolute",
+                left: "829px",
+                top: "348px",
+                fontFamily: "auto",
+                fontSize: "95%",
+              }}
+              className="errors"
+            >
+              {errors.lastName?.message?.toString()}
+            </span>
+          </div>
+
+         
+      </div>
     </div>
   );
 }
