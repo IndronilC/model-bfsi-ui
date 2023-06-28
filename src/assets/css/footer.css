@@ -1,0 +1,51 @@
+button.pagination-btn{
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.pagination{
+
+
+  width: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 722.3px;
+  top: 835px;
+  position: absolute;
+
+ 
+	
+	& > button{
+		flex: 0 0 42px;
+		height: 42px;
+		padding: 6px;
+		transition: 0.4s;
+    
+		
+		&:hover{
+			flex: 0 0 70px;
+			
+			& > span{
+				background-color: #4FB645;
+				opacity: 1;
+			}
+		}
+		
+		& > span{
+			display: block;
+			width: 40%;
+			height: 10px;
+			border-radius: 15px;
+			background-color: #4FB645;
+			opacity: 0.3;
+			transition: 0.4s
+     
+		}
+	}
+}
+span#active {
+  width: 22px;
+    opacity: 1;
+}
