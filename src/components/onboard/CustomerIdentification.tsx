@@ -12,7 +12,8 @@ import { useNavigate } from "react-router-dom";
 import { Stepper, StepLabel, Step } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { getData, setCustomerdata } from '../';
+// import { getData, setCustomerdata } from "../Utils/common";
+import { getData,setCustomerdata } from "../../Utils/common";
 
 export default function CustomerIdentification() {
   const [activeStep, setActiveStep] = React.useState(1);
