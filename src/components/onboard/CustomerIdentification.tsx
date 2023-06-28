@@ -355,6 +355,52 @@ export default function CustomerIdentification() {
               {errors.state?.message?.toString()}
             </span>
           </div>
+          <div>
+            <label className="label-name-7">City *</label>
+            <div className="dropdown-1">
+              <Box
+                sx={{
+                  position: "absolute",
+                  width: 360,
+                  top: 631,
+                  left: 434,
+                  background: "#F5F8FF",
+                }}
+              >
+                <FormControl fullWidth>
+                  <select
+                    className="cities"
+                    value={city}
+                    // onChange={handlecityChange}
+                    {...register("city", {
+                      required: "City is Required...",
+                    })}
+                    defaultValue={objData?.city}
+                  >
+                    <option value="">Select </option>
+
+                    <option value="Channai">Chennai</option>
+
+                    <option value="Salem">Salem</option>
+
+                    <option value="Namakkal">Namakkal</option>
+                  </select>
+                </FormControl>
+              </Box>
+            </div>
+            <span
+              style={{
+                position: "absolute",
+                left: "434px",
+                top: "685px",
+                fontFamily: "auto",
+                fontSize: "95%",
+              }}
+              className="errors"
+            >
+              {errors.city?.message?.toString()}
+            </span>
+          </div>
           
     </div>
   );
