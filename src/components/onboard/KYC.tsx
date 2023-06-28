@@ -288,7 +288,7 @@ export default function KYC() {
             )}
           </div>
 
-       
+          <button className="bt-2">Next</button>
         </form>
       </div>
     </div>
