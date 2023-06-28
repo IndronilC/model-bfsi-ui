@@ -1,5 +1,4 @@
 import "../App.css"
-import Header from "../../shared/header/header";
 import { useNavigate } from "react-router-dom";
 import arrowRight from  '../assets/img/ArrowRight.png'
 import saveIcon from '../assets/img/SaveIcon.png'
@@ -32,7 +31,7 @@ export default function First(): JSX.Element {
 
   return (
     <div>
-        <Header/>
+       
       <div>
         <div className="img-green">
           <img className="group" src={gropLogo} alt="Mambu"></img>
