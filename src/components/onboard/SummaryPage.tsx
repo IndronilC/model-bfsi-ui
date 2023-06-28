@@ -167,4 +167,17 @@ export default function Summary() {
         </div>
       </div>
 
-      
+      <div className="topbar">
+        <img width="100%" src={topbar} alt="logo" />
+        <img className="logo" src={logo} />
+      </div>
+      <img className="bank" src={bank} />
+      <div>
+        <h1 className="upper"> Summary </h1>
+        <p className="upper-1">
+          {" "}
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry{" "}
+        </p>
+
+        
