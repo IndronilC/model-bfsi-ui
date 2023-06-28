@@ -66,4 +66,12 @@ const Data = {
     Data.idProofType = data.idproof;
   };
   
- 
+  export const setSecuritydata = (data:any) => {
+    Data.Question1 = data.Question1;
+    Data.Question2 = data.Question2;
+    Data.Question3 = data.Question3;
+    Data.Answer1 = data.Answer1;
+    Data.Answer2 = data.Answer2;
+    Data.Answer3 = data.Answer3;
+  };
+  
