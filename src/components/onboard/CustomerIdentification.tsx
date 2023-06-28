@@ -401,7 +401,51 @@ export default function CustomerIdentification() {
               {errors.city?.message?.toString()}
             </span>
           </div>
-          
+          <div>
+            <label className="label-name-8">Pincode * </label>
+            <input
+              className="TextBox-6"
+              type="number"
+              {...register("pincode", {
+                required: "Pincode is Required...",
+
+                minLength: {
+                  value: 6,
+
+                  message: "Pincode must be atleast 6 characters long...",
+                },
+
+                maxLength: {
+                  value: 6,
+
+                  message: "Pincode must be atmost 6 characters long...",
+                },
+
+                pattern: {
+                  value: /^(?!\s*$).+/,
+                  message: "Pincode cannot contain whitespace only.",
+                },
+              })}
+              defaultValue={objData?.pincode}
+              placeholder="Enter"
+            />
+            <span
+              style={{
+                position: "absolute",
+                left: "831px",
+                top: "685px",
+                fontFamily: "auto",
+                fontSize: "95%",
+              }}
+              className="errors"
+            >
+              {errors.pincode?.message?.toString()}
+            </span>
+          </div>
+
+          <button className="next-btn" onClick={nextStep}>Next</button>
+        </form>
+      </div>
     </div>
   );
 }
