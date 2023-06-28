@@ -222,8 +222,49 @@ export default function CustomerIdentification() {
             </span>
           </div>
 
+          <div>
+            <label className="label-name-4">Address Line1 *</label>
+            <input
+              className="TextBox-4"
+              type="text"
+              {...register("address1", {
+                required: "Address Line1 is Required...",
+
+                minLength: {
+                  value: 8,
+
+                  message: "Address Line1 must be atleast 8 characters long...",
+                },
+
+                maxLength: {
+                  value: 25,
+
+                  message: "Address Line1 must be atmost 25 characters long...",
+                },
+
+                pattern: {
+                  value: /^(?!\s*$).+/,
+                  message: "Address Line1 cannot contain whitespace only.",
+                },
+              })}
+              defaultValue={objData?.address1}
+              placeholder="Enter"
+            />
+            <span
+              style={{
+                position: "absolute",
+                left: "830px",
+                top: "460px",
+                fontFamily: "auto",
+                fontSize: "95%",
+              }}
+              className="errors"
+            >
+              {errors.address1?.message?.toString()}
+            </span>
+          </div>
+
           
-      </div>
     </div>
   );
 }
