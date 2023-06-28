@@ -6,7 +6,7 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { getData, setCustomerdata, setKycdata } from "../Utils/common";
+import { getData,setKycdata } from "../../Utils/common";
 import Vector from "../assets/img/Vector.png";
 import close from "../assets/img/close.png";
 import Uploadicon from "../assets/img/Uploadicon.png";
