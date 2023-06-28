@@ -32,3 +32,11 @@ const Data = {
     return Data;
   };
   
+  export const setPersonaldata = (data:any) => {
+    Data.email = data.email;
+    Data.panNumber = data.panNumber;
+    Data.aadharNumber = data.aadharNumber;
+    Data.phoneNumber = data.mobileNumber;
+  };
+  
+  
