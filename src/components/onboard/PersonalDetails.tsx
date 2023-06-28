@@ -281,7 +281,9 @@ export default function PersonalDetails() {
                 {errors.checkbox?.message?.toString()}
               </span>
             </div>
-            
+            <button type="submit" className="next-button-1" onClick={nextStep}>
+              Next
+            </button>
           </form>
         </div>
       </div>
