@@ -311,4 +311,52 @@ export default function SecurityQuestions() {
                 {errors.Question3?.message?.toString()}
               </span>
             </div>
-            
+            <div>
+              <label className="label3">
+                <b>Answer 3</b>
+              </label>
+              <input
+                className="ans3"
+                type="text"
+                {...register("Answer3", {
+                  required: "Answer 3 is Required...",
+
+                  minLength: {
+                    value: 3,
+
+                    message: "Your answer must be atleast 3 characters long...",
+                  },
+
+                  maxLength: {
+                    value: 50,
+
+                    message: "Your answer must be atmost 50 characters long...",
+                  },
+
+                  pattern: {
+                    value: /^(?!\s*$).+/,
+                    message: " Your answer cannot contain whitespace only.",
+                  },
+                })}
+                placeholder="Enter your answer"
+              />
+              <span
+                style={{
+                  position: "absolute",
+                  left: "27%",
+                  top: "292%",
+                  fontFamily: "auto",
+                  fontSize: "95%",
+                  width: "300px",
+                }}
+                className="errors"
+              >
+                {errors.Answer3?.message?.toString()}
+              </span>
+            </div>
+          </div>
+          <br />
+          <br />
+          <br />
+
+         
