@@ -137,8 +137,51 @@ export default function PersonalDetails() {
               </span>
             </div>
 
+            <div className="email">
+              <text className="email-text">
+                Registered/Personal e-mail address *
+              </text>
+
+              <input
+                className="email-field"
+                {...register("email", {
+                  required: "Email is Required...",
+
+                  pattern: {
+                    value:
+                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+
+                    message: "Email must be valid",
+                  },
+
+                  maxLength: {
+                    value: 59,
+
+                    message:
+                      "Email must be valid and atmost 59 characters long...",
+                  },
+                })}
+                placeholder="Max 59 characters allowed"
+                defaultValue={objData?.email}
+              ></input>
+
+              <span
+                style={{
+                  color: "red",
+                  position: "absolute",
+                  top: "63%",
+                  fontFamily: "auto",
+                  fontSize: "115%",
+                  left: "0%",
+                  fontWeight: "500",
+                }}
+                className="errors"
+              >
+                {errors.email?.message?.toString()}
+              </span>
+            </div>
+
             
-        </div>
       </div>
     </div>
   );
