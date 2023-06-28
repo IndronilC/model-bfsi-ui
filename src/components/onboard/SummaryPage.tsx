@@ -187,4 +187,60 @@ export default function Summary() {
           </button>
         </div>
 
-       
+        <div className="table">
+          
+          <table className="table-outline">
+            <tbody>
+              <tr>
+              <td>Name</td>
+              <td className="space">:{details?.fullName}</td>
+              </tr>
+              <tr>
+              <td>Mobile Number</td>
+              <td className="space">:{details?.phoneNumber}</td>
+              </tr>
+              <tr>
+              <td>PAN</td>
+              <td className="space">:{details?.panNumber}</td>
+              </tr>
+              <tr>
+              <td>Email ID</td>
+              <td className="space">:{details?.email}</td>
+              </tr>
+              <tr>
+              <td>Aadhar Number</td>
+              <td className="space">:{details?.aadharNumber}</td>
+              </tr>
+              <tr>
+              <td>DOB</td>
+              <td className="space">:{details?.dateOfBirth}</td>
+              </tr>
+              <tr>
+              <td>Address</td>
+              <td className="space">:{details?.address}</td>
+              </tr>
+              <tr>
+              <td>ID Proof</td>
+              <td className="space">:{details?.idProof}</td>
+              </tr>
+              <tr>
+              <td>Address Proof</td>
+              <td className="space">:{details?.addressProof}</td>
+              </tr>
+              <tr>
+              <td>Security question 1</td>
+              <td className="space">:{details?.Question1}</td>
+              </tr>
+              <tr>
+              <td>Security question 2</td>
+              <td className="space">:{details?.Question2}</td>
+              </tr>
+              <tr>
+              <td>Security question 3</td>
+              <td className="space">:{details?.Question3}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        
