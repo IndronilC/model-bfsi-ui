@@ -306,6 +306,55 @@ export default function CustomerIdentification() {
             </span>
           </div>
 
+          <div>
+            <label className="label-name-6">State *</label>
+            <div
+              className="dropdown"
+              style={{ position: "absolute", display: "contents" }}
+            >
+              <Box
+                sx={{
+                  position: "absolute",
+                  width: 360,
+                  top: 517,
+                  left: 827,
+                  height: 50,
+                }}
+              >
+                <FormControl fullWidth>
+                  <select
+                    className="states"
+                    value={state}
+                    // onChange={handlestateChange}
+                    {...register("state", {
+                      required: "State is Required...",
+                    })}
+                    defaultValue={objData?.state}
+                  >
+                    <option value="">Select </option>
+
+                    <option value={"Tamilnadu"}>TamilNadu</option>
+
+                    <option value={"Delhi"}>Delhi</option>
+
+                    <option value={"Bangalore"}>Bangalore</option>
+                  </select>
+                </FormControl>
+              </Box>
+            </div>
+            <span
+              style={{
+                position: "absolute",
+                left: "830px",
+                top: "571px",
+                fontFamily: "auto",
+                fontSize: "95%",
+              }}
+              className="errors"
+            >
+              {errors.state?.message?.toString()}
+            </span>
+          </div>
           
     </div>
   );
