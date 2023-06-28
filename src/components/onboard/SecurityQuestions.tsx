@@ -267,4 +267,48 @@ export default function SecurityQuestions() {
             </div>
           </div>
           <br />
-          
+          <div>
+            <div>
+              <label className="name3">
+                <b>Question 3</b>
+              </label>
+              <div>
+                <select
+                  className="ques3"
+                  {...register("Question3", {
+                    required: "Question 3 is Required...",
+                  })}
+                >
+                  <option value="">Select </option>
+
+                  <option disabled={true} value="In what city were you born?">
+                    In what city were you born?
+                  </option>
+
+                  <option
+                    disabled={true}
+                    value=" What was your favorite food as a child?"
+                  >
+                    What was your favorite food as a child?
+                  </option>
+
+                  <option value=" Name of your favorite band or singer?">
+                    Name of your favorite band or singer?
+                  </option>
+                </select>
+              </div>
+              <span
+                style={{
+                  position: "absolute",
+                  left: "0px",
+                  top: "292%",
+                  fontFamily: "auto",
+                  fontSize: "95%",
+                  width: "155px",
+                }}
+                className="errors"
+              >
+                {errors.Question3?.message?.toString()}
+              </span>
+            </div>
+            
