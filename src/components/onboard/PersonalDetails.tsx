@@ -181,6 +181,43 @@ export default function PersonalDetails() {
               </span>
             </div>
 
+            <div className="AadharNumber">
+              <text className="AadharNumber-text">
+                Enter Your Aadhar Number *
+              </text>
+
+              <input
+                className="AadharNumber-field"
+                type="number"
+                {...register("aadharNumber", {
+                  required: "Aadhar Number is Required...",
+
+                  pattern: {
+                    value: /^([0-9]){12}$/,
+
+                    message: "Aadhar Number must be 12 character",
+                  },
+                })}
+                defaultValue={objData?.aadharNumber}
+                placeholder="X X X X  X X X X  X X X X  "
+              ></input>
+
+              <span
+                style={{
+                  color: "red",
+                  position: "absolute",
+                  top: "83%",
+                  fontFamily: "auto",
+                  fontSize: "115%",
+                  left: "0%",
+                  fontWeight: "500",
+                }}
+                className="errors"
+              >
+                {errors.aadharNumber?.message?.toString()}
+              </span>
+            </div>
+
             
       </div>
     </div>
