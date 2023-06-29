@@ -2,15 +2,15 @@ import React from "react";
 import topbar from "../assets/img/TopBar.png";
 import logo from "../assets/img/Logo.png";
 import sidebar from "../assets/img/SideBar.png";
-import bank from "../assets/img/Bank.png";
-import arrowleft from "../assets/img/ArrowLeft.png";
+import bank from "../../assets/img/Bank.png";
+import arrowleft from "../../assets/img/ArrowLeft.png";
 import line from "../assets/img/Line.png";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Stepper, StepLabel, Step } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { getData, setSecuritydata } from "../Utils/common";
+import { getData,setSecuritydata } from "../../Utils/common";
 
 
 export default function SecurityQuestions() {

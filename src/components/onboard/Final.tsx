@@ -1,5 +1,5 @@
 import React from "react";
-import success from '../assets/img/Success.png'
+import success from '../../assets/img/Success.png'
 import { useNavigate } from "react-router-dom";
 
 

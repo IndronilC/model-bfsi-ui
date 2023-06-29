@@ -1,15 +1,15 @@
 import React from "react";
-import bank from "../assets/img/Bank.png";
+import bank from "../../assets/img/Bank.png";
 import { useState, useEffect } from "react";
-import arrowleft from "../assets/img/ArrowLeft.png";
+import arrowleft from "../../assets/img/ArrowLeft.png";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { getData,setKycdata } from "../../Utils/common";
-import Vector from "../assets/img/Vector.png";
-import close from "../assets/img/close.png";
-import Uploadicon from "../assets/img/Uploadicon.png";
+import Vector from "../../assets/img/Vector.png";
+import close from "../../assets/img/close.png";
+import Uploadicon from "../../assets/img/Uploadicon.png";
 
 
 

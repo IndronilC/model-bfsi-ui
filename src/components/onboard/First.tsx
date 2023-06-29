@@ -1,9 +1,8 @@
-import "../App.css"
 import { useNavigate } from "react-router-dom";
-import arrowRight from  '../assets/img/ArrowRight.png'
-import saveIcon from '../assets/img/SaveIcon.png'
-import currentIcon from '../assets/img/CurrentIcon.png'
-import gropLogo from '../assets/img/Group.png'
+import arrowRight from  '../../assets/img/ArrowRight.png'
+import saveIcon from '../../assets/img/SaveIcon.png'
+import currentIcon from '../../assets/img/CurrentIcon.png'
+import gropLogo from '../../assets/img/Group.png'
 
 
 interface MyButtonProps {

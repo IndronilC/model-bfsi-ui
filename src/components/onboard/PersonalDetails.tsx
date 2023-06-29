@@ -1,12 +1,11 @@
 import React from "react";
-import "../App.css";
-import bank from "../assets/img/Bank.png";
-import arrowleft from "../assets/img/ArrowLeft.png";
+import bank from "../../assets/img/Bank.png";
+import arrowleft from "../../assets/img/ArrowLeft.png";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { getData, setPersonaldata } from "../Utils/common";
+import { getData,setPersonaldata } from "../../Utils/common";
 
 
 export default function PersonalDetails() {

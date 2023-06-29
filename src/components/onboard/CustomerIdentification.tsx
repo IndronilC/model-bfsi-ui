@@ -1,13 +1,9 @@
 import React from "react";
-import topbar from "../assets/img/TopBar.png";
-import logo from "../assets/img/Logo.png";
-import sidebar from "../assets/img/SideBar.png";
-import bank from "../assets/img/Bank.png";
-import line from "../assets/img/Line.png";
+import bank from "../../assets/img/Bank.png";
+import arrowleft from "../../assets/img/ArrowLeft.png";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import { useState, useEffect } from "react";
-import arrowleft from "../assets/img/ArrowLeft.png";
 import { useNavigate } from "react-router-dom";
 import { Stepper, StepLabel, Step } from "@mui/material";
 import { useLocation } from "react-router-dom";
