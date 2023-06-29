@@ -118,6 +118,8 @@ background: #F5F8FF;
 border: 1px solid #C6D0E9;
 border-radius: 4px;
 padding-left: 1%;
+font-size: 90%;
+font-weight: bold;
 }
 
 .TextBox-1{
@@ -133,6 +135,8 @@ padding-left: 1%;
   border: 1px solid #C6D0E9;
   border-radius: 4px;
   padding-left: 1%;
+  font-size: 90%;
+  font-weight: bold;
 }
 
 .TextBox-2{
@@ -148,6 +152,8 @@ padding-left: 1%;
   border: 1px solid #C6D0E9;
   border-radius: 4px;
   padding-left: 1%;
+  font-size: 90%;
+  font-weight: bold;
 }
 
 .TextBox-3{
@@ -163,6 +169,8 @@ padding-left: 1%;
   border: 1px solid #C6D0E9;
   border-radius: 4px;
   padding-left: 1%;
+  font-size: 90%;
+  font-weight: bold;
 }
 
 .TextBox-4{
@@ -178,6 +186,8 @@ padding-left: 1%;
   border: 1px solid #C6D0E9;
   border-radius: 4px;
   padding-left: 1%;
+  font-size: 90%;
+  font-weight: bold;
 }
 
 .TextBox-5{
@@ -193,6 +203,8 @@ padding-left: 1%;
   border: 1px solid #C6D0E9;
   border-radius: 4px;
   padding-left: 1%;
+  font-size: 90%;
+  font-weight: bold;
 }
 
 .TextBox-6{
@@ -206,6 +218,8 @@ padding-left: 1%;
   border: 1px solid #C6D0E9;
   border-radius: 4px;
   padding-left: 1%;
+  font-size: 90%;
+  font-weight: bold;
 }
 
 .TextBox-7{
@@ -221,6 +235,8 @@ padding-left: 1%;
   height: 166px;
   width: 752px;
   padding-left: 1%;
+  font-size: 90%;
+  font-weight: bold;
 }
 .label-name{
   position: absolute;
