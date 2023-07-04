@@ -5,23 +5,34 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { getData,setPersonaldata } from "../../Utils/common";
-
+import { getData, setPersonaldata } from "../../Utils/common";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
 
 export default function PersonalDetails() {
   const navigate = useNavigate();
- const [activeStep,setActiveStep]=React.useState(0);
+  const [open, setOpen] = React.useState(false);
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const [termsChecked, setTermsChecked] = useState(false);
+
+  const handleTermsCheck = () => {
+    setTermsChecked(!termsChecked);
+  };
 
   function backhandleClick() {
     navigate("/First");
   }
- 
-
-  const nextStep = () =>{
-    if(activeStep < 4) setActiveStep ((currentStep)=> currentStep + 1);
-  };
-
 
   const [objData, setObjData] = useState<{
     phoneNumber?: string;
@@ -30,30 +41,17 @@ export default function PersonalDetails() {
     panNumber?: string;
   }>();
 
-  const location = useLocation();
-  const [state] = useState(location.state || {});
-
-  const currentPage = location.pathname.slice(1);
-
   useEffect(() => {
-    // console.log();
-    // const myClass: HTMLInputElement | null = document.querySelector(
-    //   "." + location.pathname.slice(1)
-    // ) as HTMLInputElement;
-
-    // if (myClass) {
-    //   myClass.id = "active";
-    // }
     const val = getData();
     setObjData(val);
     console.log();
-  }, [currentPage]);
+  });
 
   const {
     register,
     handleSubmit,
 
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     mode: "all",
   });
@@ -70,8 +68,6 @@ export default function PersonalDetails() {
   return (
     <div>
       <div>
-      
-       
         <img className="bank" src={bank} />
         <div className="details">
           <form
@@ -95,7 +91,8 @@ export default function PersonalDetails() {
 
               <input
                 className="mobnum-field"
-                type="number"
+                type="text"
+                maxLength={10}
                 {...register("mobileNumber", {
                   required: "Mobile Number is Required...",
 
@@ -113,6 +110,14 @@ export default function PersonalDetails() {
                 })}
                 defaultValue={objData?.phoneNumber}
                 placeholder="Enter Your Mobile Number"
+                onKeyPress={(event) => {
+                  const keyCode = event.which || event.keyCode;
+                  const keyValue = String.fromCharCode(keyCode);
+                  const isValid = /^\d+$/.test(keyValue);
+                  if (!isValid) {
+                    event.preventDefault();
+                  }
+                }}
               ></input>
               <input
                 type="text"
@@ -187,7 +192,8 @@ export default function PersonalDetails() {
 
               <input
                 className="AadharNumber-field"
-                type="number"
+                type="text"
+                maxLength={12}
                 {...register("aadharNumber", {
                   required: "Aadhar Number is Required...",
 
@@ -199,6 +205,14 @@ export default function PersonalDetails() {
                 })}
                 defaultValue={objData?.aadharNumber}
                 placeholder="X X X X  X X X X  X X X X  "
+                onKeyPress={(event) => {
+                  const keyCode = event.which || event.keyCode;
+                  const keyValue = String.fromCharCode(keyCode);
+                  const isValid = /^\d+$/.test(keyValue);
+                  if (!isValid) {
+                    event.preventDefault();
+                  }
+                }}
               ></input>
 
               <span
@@ -221,6 +235,8 @@ export default function PersonalDetails() {
               <label className="pan-text">PAN (Personal Account Number)*</label>
               <input
                 className="pan-field"
+                type="text"
+                maxLength={10}
                 {...register("panNumber", {
                   required: "PAN Number is Required...",
 
@@ -254,16 +270,15 @@ export default function PersonalDetails() {
                 type="checkbox"
                 className="checkbox"
                 id="user"
-                // name="user"
                 value="user"
                 {...register("checkbox", {
                   required: "Checkbox Selection is Required...",
                 })}
-                //required
-                // defaultValue={objData?.checkbox}
+                disabled={!termsChecked}
               ></input>
-              <label htmlFor="user" className="terms">
-                I Agree with <a href="www.kanini.com">Terms and Conditions</a>
+              <label onClick={handleClickOpen} htmlFor="user" className="terms">
+                I Agree with{" "}
+                <a onClick={handleTermsCheck}>Terms and Conditions</a>
               </label>
               <span
                 style={{
@@ -279,8 +294,50 @@ export default function PersonalDetails() {
               >
                 {errors.checkbox?.message?.toString()}
               </span>
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+              >
+                <DialogTitle id="alert-dialog-title">
+                  {"Terms and Conditions"}
+                </DialogTitle>
+                <DialogContent>
+                  <DialogContentText id="alert-dialog-description">
+                    I hereby consent to receive and authorize the Bank and its
+                    affiliates/ group companies to reach me/send any
+                    communication pertaining to my Savings Account and related
+                    services/facilities/special offers, or any other
+                    relationship held by me with the Bank, or in relation to
+                    various products, offers and services provided by Bank /its
+                    group companies, through registered e-mail, phone, SMS,
+                    WhatsApp messaging, or any other electronic mode or other
+                    messaging or social media platforms. Bank will be sending
+                    One Time Pin (OTP) on the above mentioned mobile number.
+                    This consent will override any registration for DND/DNC
+                    registered with Bank with respect to Saving Account/any
+                    other relationship with Bank and any other
+                    services/facilities/offers offered by Bank. I understand and
+                    agree that the email provider /WhatsApp or any other service
+                    provider can review/monitor the contents shared/communicated
+                    through email provider/ WhatsApp or other service provider.
+                    I understand that such electronic mode of communication(s)
+                    are subject to the terms and conditions of the respective
+                    service provider and agree to comply with the terms of use
+                    of email/ WhatsApp, SMS, or any other electronic mode, as
+                    applicable and updated/modified by the service provider from
+                    time to time.
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions></DialogActions>
+              </Dialog>
             </div>
-            <button type="submit" className="next-button-1" onClick={nextStep}>
+            <button
+              type="submit"
+              className="next-button-1"
+              disabled={!isValid || !termsChecked}
+            >
               Next
             </button>
           </form>

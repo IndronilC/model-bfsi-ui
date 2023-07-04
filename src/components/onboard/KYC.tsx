@@ -6,17 +6,14 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { getData,setKycdata } from "../../Utils/common";
+import { getData, setKycdata } from "../../Utils/common";
 import Vector from "../../assets/img/Vector.png";
 import close from "../../assets/img/close.png";
 import Uploadicon from "../../assets/img/Uploadicon.png";
 
-
-
 export default function KYC() {
-  const [activeStep, setActiveStep] = React.useState(2);
   const navigate = useNavigate();
-  const [objData, setObjData] = useState();
+  const [objData, setObjData] = useState({});
 
   const [selectedFile, setSelectedFile] = useState<File>();
   const [fileSelected, setFileSelected] = useState<File>();
@@ -49,20 +46,11 @@ export default function KYC() {
   const currentPage = location.pathname.slice(1);
 
   useEffect(() => {
-    // console.log();
-    // const myClass: HTMLInputElement | null = document.querySelector(
-    //   "." + location.pathname.slice(1)
-    // ) as HTMLInputElement;
-
-    // if (myClass) {
-    //   myClass.id = "active";
-    // }
     const val = getData();
-    // setObjData(val);
+    setObjData(val);
 
-    // document.querySelector("." + location.pathname.slice(1)).id = "active";
     console.log();
-  }, [currentPage]);
+  });
 
   const onDrop = useCallback((acceptedFiles: any) => {
     console.log(acceptedFiles);
@@ -73,16 +61,16 @@ export default function KYC() {
 
     handleSubmit,
 
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     mode: "all",
   });
 
   const onSubmit = (data: any) => {
     console.log("data", data);
-    // setKycdata(data);
-    // const val = getData();
-    // setObjData(val);
+    setKycdata(data);
+    const val = getData();
+    setObjData(val);
 
     navigate("/SecurityQuestions", { state: data });
   };
@@ -91,7 +79,6 @@ export default function KYC() {
 
   return (
     <div>
-    
       <img className="bank" src={bank} />
       <div>
         <button className="arrow-left-1">
@@ -114,8 +101,6 @@ export default function KYC() {
                   <b>Id Proof </b>
                   <span className="mandate">*</span>
                 </label>
-                {/* <Dropdown />
-                <Dropzone onDrop={onDrop} accept={"image/*"}></Dropzone> */}
                 <select
                   className="idproof"
                   {...register("idproof", {
@@ -124,11 +109,11 @@ export default function KYC() {
                 >
                   <option value="">Select </option>
 
-                  <option value="1">AadharCard</option>
+                  <option value="1">Aadhar Card</option>
 
-                  <option value="2">PanCard</option>
+                  <option value="2">Pan Card</option>
 
-                  <option value="3">VoterId</option>
+                  <option value="3">Voter Id</option>
                 </select>
               </div>
               <span
@@ -162,11 +147,11 @@ export default function KYC() {
                 >
                   <option value="">Select </option>
 
-                  <option value="1">AadharCard</option>
+                  <option value="1">Aadhar Card</option>
 
-                  <option value="2">PanCard</option>
+                  <option value="2">Pan Card</option>
 
-                  <option value="3">VoterId</option>
+                  <option value="3">Voter Id</option>
                 </select>
               </div>
               <span
@@ -192,13 +177,26 @@ export default function KYC() {
               </b>
             </label>
 
-            {/* <label>Upload </label> */}
             {!fileSelected && (
               <p className="drag-drop-area">
                 Drag and drop PDF, JEPG,PNG file or{" "}
                 <span style={{ color: "blue" }}>Browse from computer</span>
                 <img className="vector" src={Vector}></img>
               </p>
+            )}
+
+            {fileSelected && (
+              <div>
+                <img className="upload" src={Uploadicon}></img>
+                <div>
+                  <label className="file-name">{fileSelected.name}</label>
+                </div>
+                <img
+                  className="remove-file"
+                  src={close}
+                  onClick={handleClearFile1}
+                ></img>
+              </div>
             )}
 
             <input
@@ -222,20 +220,6 @@ export default function KYC() {
             >
               {errors.uploadAddressProof?.message?.toString()}
             </span>
-
-            {fileSelected && (
-              <div>
-                <img className="upload" src={Uploadicon}></img>
-                <div>
-                  <label className="file-name">{fileSelected.name}</label>
-                </div>
-                <img
-                  className="remove-file"
-                  src={close}
-                  onClick={handleClearFile1}
-                ></img>
-              </div>
-            )}
           </div>
 
           <div className="upload-box">
@@ -288,7 +272,9 @@ export default function KYC() {
             )}
           </div>
 
-          <button className="bt-2">Next</button>
+          <button className="bt-2" disabled={!isValid}>
+            Next
+          </button>
         </form>
       </div>
     </div>

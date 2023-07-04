@@ -10,12 +10,10 @@ import { useNavigate } from "react-router-dom";
 import { Stepper, StepLabel, Step } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { getData,setSecuritydata } from "../../Utils/common";
-
+import { getData, setSecuritydata } from "../../Utils/common";
 
 export default function SecurityQuestions() {
-  const [activeStep] = React.useState(3);
-
+  
   const [objData, setObjData] = useState({});
 
   const navigate = useNavigate();
@@ -29,30 +27,22 @@ export default function SecurityQuestions() {
   const currentPage = location.pathname.slice(1);
 
   useEffect(() => {
-    // console.log();
-    // const myClass: HTMLInputElement | null = document.querySelector("." + location.pathname.slice(1)) as HTMLInputElement;
-
-    // if (myClass) {
-    //     myClass.id = "active";
-    // }
     const val = getData();
     setObjData(val);
-
-    // document.querySelector("." + location.pathname.slice(1)).id = "active";
     console.log();
-  }, [currentPage]);
+  });
 
   const {
     register,
 
     handleSubmit,
 
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     mode: "all",
   });
 
-  const onSubmit = (data:any) => {
+  const onSubmit = (data: any) => {
     console.log("data", data);
 
     setSecuritydata(data);
@@ -65,11 +55,6 @@ export default function SecurityQuestions() {
 
   return (
     <div>
-     
-       
-        
-
-      
       <button className="backArrow">
         <img width="100%" className="backArrow-img" src={arrowleft} />
       </button>
@@ -147,9 +132,9 @@ export default function SecurityQuestions() {
                   required: "Answer 1 is Required...",
 
                   minLength: {
-                    value: 3,
+                    value: 1,
 
-                    message: "Your answer must be atleast 3 characters long...",
+                    message: "Your answer must be atleast 1 characters long...",
                   },
 
                   maxLength: {
@@ -233,9 +218,9 @@ export default function SecurityQuestions() {
                   required: "Answer 2 is Required...",
 
                   minLength: {
-                    value: 3,
+                    value: 1,
 
-                    message: "Your answer must be atleast 3 characters long...",
+                    message: "Your answer must be atleast 1 characters long...",
                   },
 
                   maxLength: {
@@ -322,9 +307,9 @@ export default function SecurityQuestions() {
                   required: "Answer 3 is Required...",
 
                   minLength: {
-                    value: 3,
+                    value: 1,
 
-                    message: "Your answer must be atleast 3 characters long...",
+                    message: "Your answer must be atleast 1 characters long...",
                   },
 
                   maxLength: {
@@ -359,26 +344,11 @@ export default function SecurityQuestions() {
           <br />
           <br />
 
-          <button className="prsub">Preview & Submit</button>
+          <button className="prsub" disabled={!isValid}>
+            Preview & Submit
+          </button>
         </form>
       </div>
-
-      {/* <div>
-        <div className="pagination-4">
-          <button className="pagination-btn">
-            <span className="PersonalDetails" id=""></span>
-          </button>
-          <button className="pagination-btn">
-            <span className="CustomerIdentification" id=""></span>
-          </button>
-          <button className="pagination-btn">
-            <span className="KYC" id=""></span>
-          </button>
-          <button className="pagination-btn">
-            <span className="SecurityQuestions" id=""></span>
-          </button>
-        </div>
-      </div> */}
     </div>
   );
 }

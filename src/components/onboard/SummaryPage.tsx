@@ -11,39 +11,44 @@ import edit from "../../assets/img/Edit.png";
 import downloadLogo from "../../assets/img/Download.png";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
- import { getData } from "../../Utils/common";
-import * as XLSX from 'xlsx';
-import {write} from 'xlsx';
-
-
-
+import { getData } from "../../Utils/common";
+import * as XLSX from "xlsx";
+import { write } from "xlsx";
 
 export default function Summary() {
-  const [details, setDetails] =  useState<{ fullName?: string, phoneNumber?:string,email?:string,panNumber?:string, aadharNumber?:string,dateOfBirth?:string,address?:string,idProof?:string,addressProof?:String,Question1?:String,Question2?:String,Question3?:String}>({});
-
+  const [details, setDetails] = useState<{
+    fullName?: string;
+    phoneNumber?: string;
+    email?: string;
+    panNumber?: string;
+    aadharNumber?: string;
+    dateOfBirth?: string;
+    address?: string;
+    idProof?: string;
+    addressProof?: String;
+    Question1?: String;
+    Question2?: String;
+    Question3?: String;
+  }>({});
 
   useEffect(() => {
     const val = getData();
     setDetails(val);
   });
-   
+
   const handleExport = () => {
-    // Convert object to SheetJS worksheet
-    //const data = details;
-    // const data = [{
-    //   name: "thanaraj",
-    //   age: 22
-    // }]
     const worksheet = XLSX.utils.json_to_sheet([details]);
 
     // Create a workbook and add the worksheet
     const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
 
     // Convert workbook to Excel file
-    const excelBuffer = write(workbook, { bookType: 'xlsx', type: 'array' });
-    const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    const fileName = 'data.xlsx';
+    const excelBuffer = write(workbook, { bookType: "xlsx", type: "array" });
+    const blob = new Blob([excelBuffer], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    });
+    const fileName = "data.xlsx";
 
     if ((navigator as any).msSaveBlob) {
       // For Internet Explorer
@@ -51,7 +56,7 @@ export default function Summary() {
     } else {
       // For other browsers
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       a.href = url;
       a.download = fileName;
       document.body.appendChild(a);
@@ -60,7 +65,6 @@ export default function Summary() {
       URL.revokeObjectURL(url);
     }
   };
-
 
   const [activeStep, setActiveStep] = React.useState(4);
 
@@ -74,10 +78,6 @@ export default function Summary() {
   function handleeditClick() {
     navigate("/PersonalDetails");
   }
-
-  const nextStep = () => {
-    if (activeStep < 0) setActiveStep((currentStep) => currentStep + 1);
-  };
 
   function handleeditClick2() {
     navigate("/CustomerIdentification");
@@ -188,62 +188,61 @@ export default function Summary() {
         </div>
 
         <div className="table">
-          
           <table className="table-outline">
             <tbody>
               <tr>
-              <td>Name</td>
-              <td className="space">:{details?.fullName}</td>
+                <td>Name</td>
+                <td className="space">:{details?.fullName}</td>
               </tr>
               <tr>
-              <td>Mobile Number</td>
-              <td className="space">:{details?.phoneNumber}</td>
+                <td>Mobile Number</td>
+                <td className="space">:{details?.phoneNumber}</td>
               </tr>
               <tr>
-              <td>PAN</td>
-              <td className="space">:{details?.panNumber}</td>
+                <td>PAN</td>
+                <td className="space">:{details?.panNumber}</td>
               </tr>
               <tr>
-              <td>Email ID</td>
-              <td className="space">:{details?.email}</td>
+                <td>Email ID</td>
+                <td className="space">:{details?.email}</td>
               </tr>
               <tr>
-              <td>Aadhar Number</td>
-              <td className="space">:{details?.aadharNumber}</td>
+                <td>Aadhar Number</td>
+                <td className="space">:{details?.aadharNumber}</td>
               </tr>
               <tr>
-              <td>DOB</td>
-              <td className="space">:{details?.dateOfBirth}</td>
+                <td>DOB</td>
+                <td className="space">:{details?.dateOfBirth}</td>
               </tr>
               <tr>
-              <td>Address</td>
-              <td className="space">:{details?.address}</td>
+                <td>Address</td>
+                <td className="space">:{details?.address}</td>
               </tr>
               <tr>
-              <td>ID Proof</td>
-              <td className="space">:{details?.idProof}</td>
+                <td>ID Proof</td>
+                <td className="space">:{details?.idProof}</td>
               </tr>
               <tr>
-              <td>Address Proof</td>
-              <td className="space">:{details?.addressProof}</td>
+                <td>Address Proof</td>
+                <td className="space">:{details?.addressProof}</td>
               </tr>
               <tr>
-              <td>Security question 1</td>
-              <td className="space">:{details?.Question1}</td>
+                <td>Security question 1</td>
+                <td className="space">:{details?.Question1}</td>
               </tr>
               <tr>
-              <td>Security question 2</td>
-              <td className="space">:{details?.Question2}</td>
+                <td>Security question 2</td>
+                <td className="space">:{details?.Question2}</td>
               </tr>
               <tr>
-              <td>Security question 3</td>
-              <td className="space">:{details?.Question3}</td>
+                <td>Security question 3</td>
+                <td className="space">:{details?.Question3}</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <button className="sub" onClick={handleClick || (() => nextStep())}>
+        <button className="sub" onClick={handleClick}>
           Submit
         </button>
       </div>

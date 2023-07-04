@@ -2,41 +2,28 @@ import React from "react";
 import sidebar from "../../assets/img/SideBar.png";
 import line from "../../assets/img/Line.png";
 import { useState } from "react";
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link } from "react-router-dom";
 import "../../assets/css/sidenav.css";
 import { Stepper, StepLabel, Step } from "@mui/material";
 
-
-
 export default function Sidenav() {
- 
-
   const location = useLocation();
   const activeStep = getActiveStep(location.pathname);
 
   function getActiveStep(pathname: string): number {
     switch (pathname) {
-      case '/PersonalDetails':
+      case "/PersonalDetails":
         return 0;
-      case '/CustomerIdentification':
+      case "/CustomerIdentification":
         return 1;
-      case '/KYC':
+      case "/KYC":
         return 2;
-      case '/SecurityQuestions':
+      case "/SecurityQuestions":
         return 3;
       default:
         return 0;
     }
   }
-
-  
-
-  // const nextStep = () =>{
-  //   if(activeStep < 4) setActiveStep ((currentStep)=> currentStep + 1);
-  // };
-
-  
-
 
   return (
     <div>

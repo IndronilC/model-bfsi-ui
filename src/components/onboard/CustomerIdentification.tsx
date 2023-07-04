@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import bank from "../../assets/img/Bank.png";
 import arrowleft from "../../assets/img/ArrowLeft.png";
 import Box from "@mui/material/Box";
@@ -7,28 +7,27 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Stepper, StepLabel, Step } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import { useForm } from "react-hook-form";
-// import { getData, setCustomerdata } from "../Utils/common";
-import { getData,setCustomerdata } from "../../Utils/common";
+import { useForm, Controller } from "react-hook-form";
+import { getData, setCustomerdata } from "../../Utils/common";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { TextField, Button } from "@material-ui/core";
 
 export default function CustomerIdentification() {
-  const [activeStep, setActiveStep] = React.useState(1);
-
-  const nextStep = () =>{
-    if(activeStep < 4) setActiveStep ((currentStep)=> currentStep + 1);
-  };
   const navigate = useNavigate();
 
   const [city, setCity] = useState();
   const [state, setState] = useState();
 
-  const handlecityChange = (event: any) => {
-    setCity(event.target.value);
-  };
-  const handlestateChange = (event: any) => {
-    setState(event.target.value);
+  const handleFirstNameChange = (event: any) => {
+    event.target.value = event.target.value.replace(/[0-9]/g, "");
   };
 
+  const handleLastNameChange = (event: any) => {
+    event.target.value = event.target.value.replace(/[0-9]/g, "");
+  };
   const [objData, setObjData] = useState<{
     firstName?: string;
     lastName?: string;
@@ -50,27 +49,18 @@ export default function CustomerIdentification() {
   }
 
   useEffect(() => {
-    // console.log();
-    // const myClass: HTMLInputElement | null = document.querySelector(
-    //   "." + location.pathname.slice(1)
-    // ) as HTMLInputElement;
-
-    // if (myClass) {
-    //   myClass.id = "active";
-    // }
     const val = getData();
     setObjData(val);
-
-    // document.querySelector("." + location.pathname.slice(1)).id = "active";
     console.log();
-  }, [currentPage]);
+  });
 
   const {
     register,
+    control,
 
     handleSubmit,
 
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     mode: "all",
   });
@@ -87,7 +77,6 @@ export default function CustomerIdentification() {
 
   return (
     <div>
-      
       <button className="backArrow">
         <img
           width="100%"
@@ -136,6 +125,7 @@ export default function CustomerIdentification() {
               })}
               defaultValue={objData?.firstName}
               placeholder="Enter"
+              onChange={handleFirstNameChange}
             />
             <span
               style={{
@@ -168,7 +158,7 @@ export default function CustomerIdentification() {
                 maxLength: {
                   value: 15,
 
-                  message: "Last Name must be atmost 15 characters long...",
+                  message: "Last Name must be atmost 8 characters long...",
                 },
 
                 pattern: {
@@ -178,6 +168,7 @@ export default function CustomerIdentification() {
               })}
               defaultValue={objData?.lastName}
               placeholder="Enter"
+              onChange={handleLastNameChange}
             />
             <span
               style={{
@@ -202,7 +193,6 @@ export default function CustomerIdentification() {
                 required: "DOB is Required...",
               })}
               defaultValue={objData?.dateOfBirth}
-              placeholder="MM/DD/YYYY"
             />
 
             <span
@@ -322,7 +312,6 @@ export default function CustomerIdentification() {
                   <select
                     className="states"
                     value={state}
-                    // onChange={handlestateChange}
                     {...register("state", {
                       required: "State is Required...",
                     })}
@@ -330,7 +319,7 @@ export default function CustomerIdentification() {
                   >
                     <option value="">Select </option>
 
-                    <option value={"Tamilnadu"}>TamilNadu</option>
+                    <option value={"Tamilnadu"}>Tamil Nadu</option>
 
                     <option value={"Delhi"}>Delhi</option>
 
@@ -368,7 +357,6 @@ export default function CustomerIdentification() {
                   <select
                     className="cities"
                     value={city}
-                    // onChange={handlecityChange}
                     {...register("city", {
                       required: "City is Required...",
                     })}
@@ -402,29 +390,30 @@ export default function CustomerIdentification() {
             <label className="label-name-8">Pincode * </label>
             <input
               className="TextBox-6"
-              type="number"
+              type="text"
+              maxLength={6}
               {...register("pincode", {
                 required: "Pincode is Required...",
-
-                minLength: {
-                  value: 6,
-
-                  message: "Pincode must be atleast 6 characters long...",
-                },
-
-                maxLength: {
-                  value: 6,
-
-                  message: "Pincode must be atmost 6 characters long...",
-                },
-
                 pattern: {
                   value: /^(?!\s*$).+/,
                   message: "Pincode cannot contain whitespace only.",
                 },
+                minLength: {
+                  value: 6,
+
+                  message: "Pincode must be 6 numbers...",
+                },
               })}
               defaultValue={objData?.pincode}
               placeholder="Enter"
+              onKeyPress={(event) => {
+                const keyCode = event.which || event.keyCode;
+                const keyValue = String.fromCharCode(keyCode);
+                const isValid = /^\d+$/.test(keyValue);
+                if (!isValid) {
+                  event.preventDefault();
+                }
+              }}
             />
             <span
               style={{
@@ -440,7 +429,9 @@ export default function CustomerIdentification() {
             </span>
           </div>
 
-          <button className="next-btn" onClick={nextStep}>Next</button>
+          <button className="next-btn" disabled={!isValid}>
+            Next
+          </button>
         </form>
       </div>
     </div>

@@ -1,7 +1,7 @@
 //Data object which fetches data from all the pages
 
 const Data = {
-    fullName: "",
+    fullName:" ",
     address: "",
     email: "",
     panNumber: "",
@@ -14,9 +14,9 @@ const Data = {
     address2: "",
     state: "",
     city: "",
-    zipcode: "",
-    addressProofType: "",
-    idProofType: "",
+    pincode: "",
+    addressProof: "",
+    idProof: "",
     securityQuestionsId: "",
     securityQuestionsId2: "",
     securityQuestionsId3: "",
@@ -47,7 +47,7 @@ const Data = {
     Data.address2 = data.address2;
     Data.state = data.state;
     Data.city = data.city;
-    Data.zipcode = data.zipcode;
+    Data.pincode = data.pincode;
     Data.fullName = data.firstName + " " + data.lastName;
     Data.address =
       data.address1 +
@@ -58,12 +58,12 @@ const Data = {
       ", " +
       data.city +
       ", " +
-      data.zipcode;
+      data.pincode;
   };
   
   export const setKycdata = (data:any) => {
-    Data.addressProofType = data.addressproof;
-    Data.idProofType = data.idproof;
+    Data.addressProof = data.addressproof;
+    Data.idProof = data.idproof;
   };
   
   export const setSecuritydata = (data:any) => {
