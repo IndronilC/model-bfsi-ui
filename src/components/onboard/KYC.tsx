@@ -154,6 +154,7 @@ export default function KYC() {
                   <option value="3">Voter Id</option>
                 </select>
               </div>
+
               <span
                 style={{
                   position: "absolute",
@@ -208,18 +209,20 @@ export default function KYC() {
               onChange={handleFileChange1}
             />
 
-            <span
-              style={{
-                position: "absolute",
-                top: "109%",
-                fontFamily: "auto",
-                fontSize: "95%",
-                width: "100%",
-              }}
-              className="errors"
-            >
-              {errors.uploadAddressProof?.message?.toString()}
-            </span>
+            {errors.uploadAddressProof && !fileSelected && (
+              <span
+                style={{
+                  position: "absolute",
+                  top: "109%",
+                  fontFamily: "auto",
+                  fontSize: "95%",
+                  width: "100%",
+                }}
+                className="errors"
+              >
+                {errors.uploadAddressProof?.message?.toString()}
+              </span>
+            )}
           </div>
 
           <div className="upload-box">
@@ -244,18 +247,22 @@ export default function KYC() {
               })}
               onChange={handleFileChange}
             />
-            <span
-              style={{
-                position: "absolute",
-                top: "109%",
-                fontFamily: "auto",
-                fontSize: "95%",
-                width: "100%",
-              }}
-              className="errors"
-            >
-              {errors.uploadIdProof?.message?.toString()}
-            </span>
+            {errors.uploadIdProof && !selectedFile && (
+              <span
+                style={{
+                  position: "absolute",
+                  top: "109%",
+                  fontFamily: "auto",
+                  fontSize: "95%",
+                  width: "100%",
+                }}
+                className="errors"
+              >
+                {errors.uploadIdProof?.message?.toString()}
+              </span>
+            )}
+
+            
 
             {selectedFile && (
               <div>
@@ -270,6 +277,7 @@ export default function KYC() {
                 ></img>
               </div>
             )}
+          
           </div>
 
           <button className="bt-2" disabled={!isValid}>
