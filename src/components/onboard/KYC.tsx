@@ -180,7 +180,7 @@ export default function KYC() {
 
             {!fileSelected && (
               <p className="drag-drop-area">
-                Drag and drop PDF, JEPG,PNG file or{" "}
+                Drag and drop PDF, JEPG, PNG file or{" "}
                 <span style={{ color: "blue" }}>Browse from computer</span>
                 <img className="vector" src={Vector}></img>
               </p>
@@ -233,7 +233,7 @@ export default function KYC() {
             </label>
             {!selectedFile && (
               <p className="drag-drop-area">
-                Drag and drop PDF, JEPG,PNG file or{" "}
+                Drag and drop PDF, JEPG, PNG file or{" "}
                 <span style={{ color: "blue" }}>Browse from computer</span>
                 <img className="vector" src={Vector}></img>
               </p>

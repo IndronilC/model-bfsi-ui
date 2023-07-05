@@ -1,8 +1,6 @@
-import React from "react";
 import sidebar from "../../assets/img/SideBar.png";
 import line from "../../assets/img/Line.png";
-import { useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "../../assets/css/sidenav.css";
 import { Stepper, StepLabel, Step } from "@mui/material";
 
@@ -25,11 +23,12 @@ export default function Sidenav() {
     }
   }
 
+  // Implementation of sidenavbar using stepper
   return (
     <div>
       <div className="side">
         <span>
-          <img width="100%" height="690px" src={sidebar} />
+          <img className="sidebarimg" src={sidebar} />
         </span>
 
         <div className="sideText">
@@ -45,7 +44,7 @@ export default function Sidenav() {
               </span>
               <div className="progress-bar1">
                 <Stepper
-                  style={{ width: "20%", height: "40%" }}
+                className="stepperactive"
                   orientation="vertical"
                   activeStep={activeStep}
                 >

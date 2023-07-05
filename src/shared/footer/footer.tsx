@@ -1,9 +1,10 @@
-import React from "react";
 import { useLocation } from "react-router-dom";
 import "../../assets/css/footer.css";
 import { useEffect } from "react";
 
 export default function Footer() {
+
+  //Implementation of pagination using page location.
   const location = useLocation();
 
   const currentPage = location.pathname.slice(1);

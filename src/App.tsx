@@ -1,6 +1,5 @@
-import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import First from './components/onboard/First';
 import PersonalDetails from './components/onboard/PersonalDetails';
 import CustomerIdentification from './components/onboard/CustomerIdentification';
@@ -32,7 +31,9 @@ function AppRoutes() {
   location.pathname === '/Final';
 
   return (
+    //validating based on the location the screens will be displayed
     <>
+
       {!hideSidenavFooter && <Sidenav />}
       <Header />
       <Routes>
