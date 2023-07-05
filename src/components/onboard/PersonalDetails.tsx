@@ -278,7 +278,7 @@ export default function PersonalDetails() {
               ></input>
               <label onClick={handleClickOpen} htmlFor="user" className="terms">
                 I Agree with{" "}
-                <a onClick={handleTermsCheck}>Terms and Conditions</a>
+                <a  onClick={handleTermsCheck}  style={{color:"blue"}}>Terms And Conditions</a>
               </label>
               <span
                 style={{
