@@ -2,7 +2,6 @@ import React from "react";
 import bank from "../../assets/img/Bank.png";
 import arrowleft from "../../assets/img/ArrowLeft.png";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { getData, setPersonaldata } from "../../Utils/common";
@@ -125,18 +124,7 @@ export default function PersonalDetails() {
                 className="disabled-input mobnum-field-1"
                 disabled
               />
-              <span
-                style={{
-                  color: "red",
-                  position: "absolute",
-                  top: "44%",
-                  fontFamily: "auto",
-                  fontSize: "115%",
-                  left: "0%",
-                  fontWeight: "500",
-                }}
-                className="errors"
-              >
+              <span className="errors moberror">
                 {errors.mobileNumber?.message?.toString()}
               </span>
             </div>
@@ -169,18 +157,7 @@ export default function PersonalDetails() {
                 defaultValue={objData?.email}
               ></input>
 
-              <span
-                style={{
-                  color: "red",
-                  position: "absolute",
-                  top: "63%",
-                  fontFamily: "auto",
-                  fontSize: "115%",
-                  left: "0%",
-                  fontWeight: "500",
-                }}
-                className="errors"
-              >
+              <span className="errors emailerror">
                 {errors.email?.message?.toString()}
               </span>
             </div>
@@ -215,18 +192,7 @@ export default function PersonalDetails() {
                 }}
               ></input>
 
-              <span
-                style={{
-                  color: "red",
-                  position: "absolute",
-                  top: "83%",
-                  fontFamily: "auto",
-                  fontSize: "115%",
-                  left: "0%",
-                  fontWeight: "500",
-                }}
-                className="errors"
-              >
+              <span className="errors aadharerror">
                 {errors.aadharNumber?.message?.toString()}
               </span>
             </div>
@@ -249,18 +215,7 @@ export default function PersonalDetails() {
                 defaultValue={objData?.panNumber}
                 placeholder="X X X  X X X X  X X X "
               ></input>
-              <span
-                style={{
-                  color: "red",
-                  position: "absolute",
-                  top: "103%",
-                  fontFamily: "auto",
-                  fontSize: "115%",
-                  fontWeight: "500",
-                  left: "0%",
-                }}
-                className="errors"
-              >
+              <span className="errors panerror">
                 {errors.panNumber?.message?.toString()}
               </span>
             </div>
@@ -278,20 +233,11 @@ export default function PersonalDetails() {
               ></input>
               <label onClick={handleClickOpen} htmlFor="user" className="terms">
                 I Agree with{" "}
-                <a  onClick={handleTermsCheck}  style={{color:"blue"}}>Terms And Conditions</a>
+                <a onClick={handleTermsCheck} style={{ color: "blue" }}>
+                  Terms And Conditions
+                </a>
               </label>
-              <span
-                style={{
-                  color: "red",
-                  position: "absolute",
-                  top: "78%",
-                  fontFamily: "auto",
-                  fontSize: "117%",
-                  fontWeight: "500",
-                  left: "0%",
-                }}
-                className="errors"
-              >
+              <span className="errors chkboxerror">
                 {errors.checkbox?.message?.toString()}
               </span>
               <Dialog
@@ -330,7 +276,9 @@ export default function PersonalDetails() {
                     time to time.
                   </DialogContentText>
                 </DialogContent>
-                <DialogActions></DialogActions>
+                <DialogActions>
+                  <Button onClick={handleClose}>Close</Button>
+                </DialogActions>
               </Dialog>
             </div>
             <button

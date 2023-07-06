@@ -561,7 +561,10 @@ button.backArrow {
 }
 
 .errors {
-  color: red;
+  color:red;
+  font-family:auto;
+  font-size: 115%;
+  font-weight: 500;
 }
 
 .field {
@@ -1458,6 +1461,104 @@ td.space {
   position: absolute;
   top: 34.3%;
   left: 0.25%;
+}
+
+.moberror{
+  position: absolute;
+  top:44% ;
+  left: 0%
+ 
+}
+.emailerror{
+  position: absolute;
+  top:63% ;
+  left: 0%
+}
+
+.aadharerror{
+  position: absolute;
+  top:83% ;
+  left: 0%
+}
+
+
+.firsterror {
+  position: absolute;
+  top: 348px;
+  left: 436px;
+  font-size: inherit;
+}
+
+.lasterror{
+  position: absolute;
+  top: 348px;
+  left: 831px;
+  font-size: inherit;
+}
+
+.doberror{
+  position: absolute;
+  top: 463px;
+  left: 436px;
+  font-size: inherit;
+}
+.add1error{
+  position: absolute;
+  top: 463px;
+  left: 831px;
+  font-size: inherit;
+}
+
+.add2error{
+  position: absolute;
+  top: 574px;
+  left: 436px;
+  font-size: inherit;
+}
+
+.box1{
+  position: absolute;
+  width: 360px;
+  top: 517px;
+  left: 827px;
+  height: 50px;
+}
+
+.box2{
+  position: absolute;
+  width: 360px;
+  top: 631px;
+  left: 434px; 
+}
+.stateerror{
+  position: absolute;
+  top: 573px;
+  left: 831px;
+  font-size: inherit;
+}
+.cityerror{
+  position: absolute;
+  top: 691px;
+  left: 436px;
+  font-size: inherit;
+}
+
+.pincodeerror{
+ position: absolute;
+  top: 691px;
+  left: 831px;
+  font-size: inherit;
+}
+.panerror{
+  position: absolute;
+  top:103% ;
+  left: 0%
+}
+
+.chkboxerror{
+  position: absolute;
+  top:78% ;
+  left: 0%
 }
 
 .states {
