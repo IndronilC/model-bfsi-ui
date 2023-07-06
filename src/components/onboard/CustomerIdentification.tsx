@@ -1,25 +1,14 @@
-import React, { Fragment } from "react";
 import bank from "../../assets/img/Bank.png";
 import arrowleft from "../../assets/img/ArrowLeft.png";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Stepper, StepLabel, Step } from "@mui/material";
-import { useLocation } from "react-router-dom";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { getData, setCustomerdata } from "../../Utils/common";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { TextField, Button } from "@material-ui/core";
 
 export default function CustomerIdentification() {
   const navigate = useNavigate();
-
-  const [city, setCity] = useState();
-  const [state, setState] = useState();
 
   const handleFirstNameChange = (event: any) => {
     event.target.value = event.target.value.replace(/[0-9]/g, "");
@@ -39,13 +28,8 @@ export default function CustomerIdentification() {
     pincode?: string;
   }>({});
 
-  const location = useLocation();
-  const [firstData] = useState(location.state);
-  const currentPage = location.pathname.slice(1);
-
   function backhandleSubmit() {
-    navigate("/PersonalDetails", { state: firstData });
-    console.log(firstData);
+    navigate("/PersonalDetails");
   }
 
   useEffect(() => {
@@ -56,7 +40,6 @@ export default function CustomerIdentification() {
 
   const {
     register,
-    control,
 
     handleSubmit,
 
@@ -79,7 +62,6 @@ export default function CustomerIdentification() {
     <div>
       <button className="backArrow">
         <img
-          width="100%"
           className="backArrow-img"
           src={arrowleft}
           onClick={backhandleSubmit}
@@ -127,16 +109,7 @@ export default function CustomerIdentification() {
               placeholder="Enter"
               onChange={handleFirstNameChange}
             />
-            <span
-              style={{
-                position: "absolute",
-                left: "438px",
-                top: "348px",
-                fontFamily: "auto",
-                fontSize: "95%",
-              }}
-              className="errors"
-            >
+            <span className="errors firsterror">
               {errors.firstName?.message?.toString()}
             </span>
           </div>
@@ -170,16 +143,7 @@ export default function CustomerIdentification() {
               placeholder="Enter"
               onChange={handleLastNameChange}
             />
-            <span
-              style={{
-                position: "absolute",
-                left: "829px",
-                top: "348px",
-                fontFamily: "auto",
-                fontSize: "95%",
-              }}
-              className="errors"
-            >
+            <span className="errors lasterror">
               {errors.lastName?.message?.toString()}
             </span>
           </div>
@@ -195,16 +159,7 @@ export default function CustomerIdentification() {
               defaultValue={objData?.dateOfBirth}
             />
 
-            <span
-              style={{
-                position: "absolute",
-                left: "436px",
-                top: "460px",
-                fontFamily: "auto",
-                fontSize: "95%",
-              }}
-              className="errors"
-            >
+            <span className="errors doberror">
               {errors.dob?.message?.toString()}
             </span>
           </div>
@@ -237,16 +192,7 @@ export default function CustomerIdentification() {
               defaultValue={objData?.address1}
               placeholder="Enter"
             />
-            <span
-              style={{
-                position: "absolute",
-                left: "830px",
-                top: "460px",
-                fontFamily: "auto",
-                fontSize: "95%",
-              }}
-              className="errors"
-            >
+            <span className="errors add1error">
               {errors.address1?.message?.toString()}
             </span>
           </div>
@@ -279,16 +225,7 @@ export default function CustomerIdentification() {
               defaultValue={objData?.address2}
               placeholder="Enter"
             />
-            <span
-              style={{
-                position: "absolute",
-                left: "434px",
-                top: "572px",
-                fontFamily: "auto",
-                fontSize: "95%",
-              }}
-              className="errors"
-            >
+            <span className="errors add2error">
               {errors.address2?.message?.toString()}
             </span>
           </div>
@@ -299,19 +236,10 @@ export default function CustomerIdentification() {
               className="dropdown"
               style={{ position: "absolute", display: "contents" }}
             >
-              <Box
-                sx={{
-                  position: "absolute",
-                  width: 360,
-                  top: 517,
-                  left: 827,
-                  height: 50,
-                }}
-              >
+              <Box className="box1">
                 <FormControl fullWidth>
                   <select
                     className="states"
-                    value={state}
                     {...register("state", {
                       required: "State is Required...",
                     })}
@@ -328,35 +256,17 @@ export default function CustomerIdentification() {
                 </FormControl>
               </Box>
             </div>
-            <span
-              style={{
-                position: "absolute",
-                left: "830px",
-                top: "571px",
-                fontFamily: "auto",
-                fontSize: "95%",
-              }}
-              className="errors"
-            >
+            <span className="errors stateerror">
               {errors.state?.message?.toString()}
             </span>
           </div>
           <div>
             <label className="label-name-7">City *</label>
             <div className="dropdown-1">
-              <Box
-                sx={{
-                  position: "absolute",
-                  width: 360,
-                  top: 631,
-                  left: 434,
-                  background: "#F5F8FF",
-                }}
-              >
+              <Box className="box2">
                 <FormControl fullWidth>
                   <select
                     className="cities"
-                    value={city}
                     {...register("city", {
                       required: "City is Required...",
                     })}
@@ -373,16 +283,7 @@ export default function CustomerIdentification() {
                 </FormControl>
               </Box>
             </div>
-            <span
-              style={{
-                position: "absolute",
-                left: "434px",
-                top: "685px",
-                fontFamily: "auto",
-                fontSize: "95%",
-              }}
-              className="errors"
-            >
+            <span className="errors cityerror">
               {errors.city?.message?.toString()}
             </span>
           </div>
@@ -415,16 +316,7 @@ export default function CustomerIdentification() {
                 }
               }}
             />
-            <span
-              style={{
-                position: "absolute",
-                left: "831px",
-                top: "685px",
-                fontFamily: "auto",
-                fontSize: "95%",
-              }}
-              className="errors"
-            >
+            <span className="errors pincodeerror">
               {errors.pincode?.message?.toString()}
             </span>
           </div>
